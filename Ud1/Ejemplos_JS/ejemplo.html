@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <p id="parrafito"></p>
+
+    <!-- 7.1 Modifica de forma dinámica el texto de un parrafo usando inerHTML al pulsar un boton -->
+    <h1>7.1 Modificando el código HTML</h1>
+    <p id="prueba">Modificando el contenido</p>
+    <button type="button" onclick="document.getElementById('prueba').innerHTML = 'CAMBIANDO el contenido'">
+        PRESIONAME</button>
+
+
+    <!-- 7.2 Cambiar dinamicamente la ruta de la imagen de un elemento img al hacer clic sobre el-->
+    <h1> 7.2 Cambio de inmagen con JS</h1>
+    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSPyXngAAL2wfEBxO5gYOAwIhdtyxSZ3hEvlSOZNXvtIg&s=10"
+        id="myPythonimage" onclick="cambiaPic()" width="100" height="180">
+
+    <p>haz click sobre la imagen para cambiarla</p>
+
+    <!-- 7.3 modificr el color y tamaño de la fuete de un elemento seleccionado mediante la propiedad style -->
+     <p id="mytxt"> Aprende JS</p>
+       <button type="button" onclick="myFunction()">
+        PRESIONAME</button>
+
+    <script>
+        //  document.getElementById("parrafito").innerHTML = 5 + 6;
+        //  document.write("<h2>Buenos días</h2>");
+        // window.alert("HOLA");
+
+        // 7.2 Funcion para cambiar la imagen 
+        function cambiaPic() {
+            var image = document.getElementById("myPythonimage");
+            if (image.src.match("green")) {
+                image.src = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSPyXngAAL2wfEBxO5gYOAwIhdtyxSZ3hEvlSOZNXvtIg&s=10";
+            } else {
+                image.src = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT1ESDPemm5zO_bYKtv3tzntY2dO5AHpkZGhOJKLI2Byw&s=10";
+            }
+        }
+
+        // 7.3 Funcion para cambiar el estilo
+        function myFunction() {
+            var x = document.getElementById("mytxt");
+            x.style.fontSize = "25px";
+            x.style.color = "red";
+        }
+
+    </script>
+</body>
+
+</html>

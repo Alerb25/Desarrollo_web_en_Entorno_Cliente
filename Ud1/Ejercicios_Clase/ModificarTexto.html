@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1 id="Cambio">Titulo Original</h1>
+    <p id="color">Este es el texto original</p>
+
+    <button type="button" onclick="cambio()"> Cambiar el Texto</button>
+    <button type="button" onclick="color()"> Cambiar el Estilo CSS</button>
+</body>
+<script>
+    function cambio() {
+        document.getElementById("Cambio").innerHTML = ("¡Título  Cambiado!");
+    }
+
+    function color() {
+        document.getElementById("color").innerHTML  = ("El contenido del párrafo ha sido actualizado dinámicaente");
+        var x = document.getElementById("color");
+        x.style.fontSize = "25px"; 
+        x.style.color = "red";
+    }
+</script>
+
+</html>

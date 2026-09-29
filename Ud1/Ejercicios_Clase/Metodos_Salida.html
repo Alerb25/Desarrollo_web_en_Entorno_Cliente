@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1> Prueba de Métodos de Salida en Javascript </h1>
+
+    <p>Contenido previo...</p>
+
+    <button type="button" onclick="alerta()">
+        1. Ventana Alerta</button>
+
+    <button type="button" onclick="consola()">
+        2. Mensaje consola</button>
+    
+    <button type="button" onclick="inner()">
+        3. Modificar el DOM</button>
+
+    <button type="button" onclick="escribe()">
+        4.Document write</button>
+    
+    <p id="txt">Antes.</p>
+</body>
+<script>
+    function alerta() {
+        window.alert("Esto es una alerta");
+    }
+
+    function consola(){
+        console.log("Esto es un mensaje de consola");
+    }
+
+    function inner(){
+        document.getElementById("txt").innerHTML = ("Después."); 
+    }
+
+    function escribe(){
+        document.write("Hola, Mundo!");
+    }
+</script>
+
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <--!- Ejercicio 2: Secuencia de imagenes con al menos 4 fotogramas que segun el usuario vaya haciendo clic la secuencia se reproducira -->
+     <img src="https://cdn.sanity.io/images/599r6htc/regionalized/c034e7462b57cee0326ee801952150858258ab0a-1440x810.png?w=1200&q=70&fit=max&auto=format"
+        id="myPythonimage" onclick="cambiaPic()">
+    <p>haz click sobre la imagen para cambiarla</p>
+
+    <script>
+        function cambiaPic() {
+            var image = document.getElementById("myPythonimage");
+            if (image.src.match("c034e7462b57cee0326ee801952150858258ab0a")) {
+                image.src = "https://cdn.sanity.io/images/599r6htc/regionalized/df1eca563363fa4a0121cc6bf3f47c71bcb8d2b0-1440x810.png";
+            } else if (image.src.match("df1eca563363fa4a0121cc6bf3f47c71bcb8d2b0")) {
+                image.src = "https://cdn.sanity.io/images/599r6htc/regionalized/c8ec4519174bb7279d0e90a4e7a77183f6d0d2de-720x405.png?w=1200&q=70&fit=max&auto=format";
+            } else if (image.src.match("/c8ec4519174bb7279d0e90a4e7a77183f6d0d2de-720x405.png")) {
+                image.src = "https://cdn.sanity.io/images/599r6htc/regionalized/2aa98fc606941513be42b97b31ac1df3bae86620-1440x810.png?w=1440&h=810&q=75&fit=max&auto=format";
+            }else {
+                image.src = "https://cdn.sanity.io/images/599r6htc/regionalized/c034e7462b57cee0326ee801952150858258ab0a-1440x810.png?w=1200&q=70&fit=max&auto=format";
+            }
+        }
+    </script>
+    
+</body>
+</html>

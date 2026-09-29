@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <--! Ejer3: Realiza un test de siete preguntas donde cada pregunta tenga dos botones (verdadero
+y falso). Dependiendo de si el usuario hace clic en verdadero o en falso la frase se
+pone verde (acierto) o roja (error) -->
+
+    <p>1. La capital de España es Madrid</p>
+    <button onclick="respuesta1(true)">Verdadero</button>  
+    <button onclick="respuesta1(false)">Falso</button>
+    <p> 2. La capital de Francia es París</p>
+    <button onclick="respuesta2(true)">Verdadero</button>  
+    <button onclick="respuesta2(false)">Falso</button>
+    <p> 3. La capital de Italia es Roma</p>
+    <button onclick="respuesta3(true)">Verdadero</button> 
+    <button onclick="respuesta3(false)">Falso</button>
+    <p> 4. La capital de Alemania es Berlín</p>
+    <button onclick="respuesta4(true)">Verdadero</button>
+    <button onclick="respuesta4(false)">Falso</button>
+    <p> 5. La capital de Portugal es Lisboa</p>
+    <button onclick="respuesta5(true)">Verdadero</button>
+    <button onclick="respuesta5(false)">Falso</button>
+    <p> 6. La capital de Bélgica es Bruselas</p>
+    <button onclick="respuesta6(true)">Verdadero</button>
+    <button onclick="respuesta6(false)">Falso</button>
+    <p> 7. La capital de Grecia es Atenas</p>
+    <button onclick="respuesta7(true)">Verdadero</button>
+    <button onclick="respuesta7(false)">Falso</button>
+
+    <script>
+        function respuesta1(respuesta) {
+            if (respuesta) {
+                document.querySelector("p:nth-of-type(1)").style.color = "green";
+            } else {
+                document.querySelector("p:nth-of-type(1)").style.color = "red";
+            }
+        }
+
+        function respuesta2(respuesta) {
+            if (respuesta) {
+                document.querySelector("p:nth-of-type(2)").style.color = "green";
+            } else {
+                document.querySelector("p:nth-of-type(2)").style.color = "red";
+            }
+        }
+
+        function respuesta3(respuesta) {
+            if (respuesta) {
+                document.querySelector("p:nth-of-type(3)").style.color = "green";
+            } else {
+                document.querySelector("p:nth-of-type(3)").style.color = "red";
+            }
+        }
+
+        function respuesta4(respuesta) {
+            if (respuesta) {
+                document.querySelector("p:nth-of-type(4)").style.color = "green";
+            } else {
+                document.querySelector("p:nth-of-type(4)").style.color = "red";
+            }
+        }
+
+        function respuesta5(respuesta) {
+            if (respuesta) {
+                document.querySelector("p:nth-of-type(5)").style.color = "green";
+            } else {
+                document.querySelector("p:nth-of-type(5)").style.color = "red";
+            }
+        }
+
+        function respuesta6(respuesta) {
+            if (respuesta) {
+                document.querySelector("p:nth-of-type(6)").style.color = "green";
+            } else {
+                document.querySelector("p:nth-of-type(6)").style.color = "red";
+            }
+        }
+
+        function respuesta7(respuesta) {
+            if (respuesta) {
+                document.querySelector("p:nth-of-type(7)").style.color = "green";
+            } else {
+                document.querySelector("p:nth-of-type(7)").style.color = "red";
+            }
+        }
+    </script>
+</body>
+</html>

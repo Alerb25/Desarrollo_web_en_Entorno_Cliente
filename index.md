@@ -18,6 +18,18 @@ Selecciona una unidad para ver los ejercicios
 *  [Métodos de Salida](./Ud1/Ejercicios_Clase/Metodos_Salida.html)
 *  [Modificar Texto](./Ud1/Ejercicios_Clase/ModificarTexto.html)
 
+## Unidad Didáctica 2 (Ud 2)
+### Actividades
+
+
+### Ejercicios de Clase
+*  [Area de una circunferencia](./Ud2/Ejercicios_Clase/AreaCirculo.html)
+*  [Objeto](./Ud2/Ejercicios_Clase/Objeto.html)
+*  [Operadores Aritmeticos](./Ud2/Ejercicios_Clase/OperacionesAritmeticas.html)
+*  [Operador Ternario](./Ud2/Ejercicios_Clase/OperadorTernario.html)
+*  [Var](./Ud2/Ejercicios_Clase/Var.html)
+
+
 ---
 
 ## Tecnologías

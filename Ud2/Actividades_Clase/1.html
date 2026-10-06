@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <h1>Actividad propuesta 2.1</h1>
+    <p>Al pulsar los botones los resultados se veran en la consola:  </p>
+
+    <button type="button" onclick="console.log(suma(2,3))">Suma 2 + 3</button>
+    <button type="button" onclick="console.log(resta(2,3))">Resta 2 + 3</button>
+    <button type="button" onclick="console.log(multi(2,3))">Multiplicacion 2 + 3</button>
+    <button type="button" onclick="console.log(division(2,3))">Divison 2 + 3</button>
+
+    <script>
+        //vista la funcion suma, realizar la funcion resta, multiplicacion y division
+        function suma(a, b){
+            return a + b;
+        }
+
+        //resta
+        function resta (a,b){
+            return a - b;
+        }
+        
+        // multiplicacion
+
+        function multi(a,b){
+            return a*b;
+        }
+
+        //division
+        function division(a,b){
+            if (b  != 0){
+            return a/b;}
+        }
+        
+        
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Area y longitud de una circunferencia de radio 5</h1>
+
+    <button type="button" onclick="area()">Area</button>
+    <button type="button" onclick="longitud()">Longitud</button>
+
+    <script>
+        //el area = pi * r^2
+        function area(){
+            r = 5;
+            pi = 3.14;
+
+            area = pi *(r*r);
+            return console.log(area);
+        }
+
+        //La logitud es 2*pi*r
+        function longitud(){
+            r = 5;
+            pi = 3.14;
+
+            l = pi * 2 * r;
+            return console.log(l);
+        }
+    </script>
+</body>
+</html>

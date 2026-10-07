@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eventos con prefijo ON</title>
+
+</head>
+
+<body>
+    <h1>Eventos con prefijo ON</h1>
+
+    <button id="botonC">1. Hacer clic aquí</button>
+    <br><br>
+
+    <!-- Ratón 2: onmouseover -->
+    <div id="caja" style="background: #e2e8f0; padding: 10px; width: 250px;">
+        2. Pasa el ratón por encima de esta caja
+    </div>
+
+    <br><br>
+
+    <label>3. Escribe tu nombre (oninput):</label><br>
+    <input id="texto1" type="text" ">
+
+    <br><br>
+
+  <!-- Texto 2: onkeyup (se activa al soltar una tecla) -->
+  <label>4. Escribe un texto (onkeyup):</label><br>
+  <input id="texto2" type=" text" >
+
+    <!-- Salida de texto en pantalla -->
+    <p id="salida"></p>
+
+    <script>
+        var salida = document.getElementById("salida");
+
+        function dale() {
+
+            salida.innerHTML = "¡Has hecho clic en el botón!";
+        }
+
+
+        document.getElementById("botonC").addEventListener("click", dale, false);
+
+        function cambioText() {
+            document.getElementById("caja").innerHTML = "Has pasado el raton por encima de la caja";
+
+        }
+
+        document.getElementById("caja").addEventListener("mouseover", cambioText, false);
+
+        function nombre(valor) {
+            salida.innerText = "Nombre en tiempo real: " + valor.target.value;
+        }
+
+        document.getElementById("texto1").addEventListener("input", nombre, false)
+
+        function numC(valor) {
+            console.log("Número de caracteres (Consola F12): " + valor.target.length);
+        }
+
+        document.getElementById("texto2").addEventListener("keyup", numC, false)
+
+    </script>
+</body>
+
+</html>

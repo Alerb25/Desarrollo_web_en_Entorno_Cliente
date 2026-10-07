@@ -11,8 +11,26 @@
 
 </body>
 <script>
-    var milista = ["panadero", 456, [0, 1, 2]];
+
+    //Romualdo, que todavía no ha terminado el ciclo de DAW, se pregunta si puede crear
+    //el siguiente array:
+        var milista = ["panadero", 456, [0, 1, 2]];
+//También quiere saber si podría seleccionar la siguiente posición del array:
     milista[2][2]
+//Comprueba si puede utilizarlo e intenta hacer una pequeña web que muestre todo
+//el contenido del array milista (si es posible).
+for (let i = 0; i < milista.length; i++) {
+    if (Array.isArray(milista[i])) {
+        for (let j = 0; j < milista[i].length; j++) {
+            document.write(milista[i][j] + "<br>");
+        }
+    } else {
+        document.write(milista[i] + "<br>");
+    }
+}
+  
+
+    
     
 </script>
 

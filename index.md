@@ -20,7 +20,9 @@ Selecciona una unidad para ver los ejercicios
 
 ## Unidad Didáctica 2 (Ud 2)
 ### Actividades
-
+*  [Ejer7](./Ud2/Actividades/ejer7.html)
+*  [Ejer8](./Ud2/Actividades/ejer8.html)
+*  [Ejer9](./Ud2/Actividades/ejer9.html)
 
 ### Ejercicios de Clase
 *  [Area de una circunferencia](./Ud2/Ejercicios_Clase/AreaCirculo.html)

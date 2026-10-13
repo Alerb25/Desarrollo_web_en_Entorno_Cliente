@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reto 1</title>
+</head>
+
+<body>
+    <h1 style="text-aling: center;">Boletín de notas de la clase</h1>
+
+
+    <h2>Notas por trimestre</h2>
+    <table id="notas" >
+        <tr>
+            <th>Alumno</th>
+            <th>1T</th>
+            <th>2T</th>
+            <th>3T</th>
+            <th>Media</th>
+            <th>Calificación</th>
+        </tr>
+    </table>
+
+    <h2>Añadir alumno</h2>
+    <label>Nombre: </label>
+    <input type="=text" id="nombre" name="Nombre">
+
+    <label>1T: </label>
+    <input type="number" id="T1" name="1T">
+
+    <label>2T: </label>
+    <input type="number" id="T2" name="2T">
+
+    <label>3T: </label>
+    <input type="number" id="T3" name="3T">
+<br>
+    <button type="button" onclick="addAlumno()">Añadir</button>
+    <button type="button" onclick="reset()">Volver a los datos iniciales</button>
+
+</body>
+<script>
+    //Funcion addAlumno -> añade un alumno a la tabla cogiendo los datos del formulario
+    function addAlumno() {
+        const T1 = document.getElementById("T1").value;
+        const T2 = document.getElementById("T2").value;
+        const T3 = document.getElementById("T3").value;
+        const nombre = document.getElementById("nombre").value;
+
+        suma = parseInt(T1) + parseInt(T2) + parseInt(T3);
+        media = suma / 3;
+        calificacion = "calificacion"
+
+        switch (true) {
+            case (media >= 0 && media < 5):
+                calificacion = "Insuficiente";
+                break;
+
+            case (media >= 5 && media < 7):
+                calificacion = "suficiente";
+                break;
+
+            case (media >= 7 && media < 9):
+                calificacion = "Notable";
+                break;
+
+            case (media >= 9 && media <= 10):
+                calificacion = "Sobresaliente";
+                break;
+
+            default:
+                calificacion = "-";
+                break;
+
+        }
+
+        const tabla = document.getElementById("notas");
+        const fila = notas.insertRow(-1);
+        fila.id = "filanueva";
+
+        //añadir nuevas celdas
+        const celda1 = fila.insertCell(0);
+        const celda2 = fila.insertCell(1);
+        const celda3 = fila.insertCell(2);
+        const celda4 = fila.insertCell(3);
+        const celda5 = fila.insertCell(4);
+        const celda6 = fila.insertCell(5);
+        //darle valor
+
+        celda1.textContent = nombre;
+        celda2.textContent = T1;
+        celda3.textContent = T2;
+        celda4.textContent = T3;
+        celda5.textContent = media.toFixed(2);
+        celda6.textContent = calificacion;
+
+
+    }
+
+    //reset para eliminar todos los datos de  la tabla
+    function reset() {
+        fila = document.getElementById("filanueva");
+        if (fila) {
+            fila.remove();
+        }
+    }
+</script>
+
+</html>

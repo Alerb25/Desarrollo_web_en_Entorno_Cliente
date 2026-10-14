@@ -63,6 +63,21 @@
   <div id="mensaje"></div>
 </div>
 
+<!-- Consultas -->
+ <div class="panel">
+  <h2>Consultas</h2>
+  <button onclick="contarAprobados()">Contar Aprobados</button>
+  <button onclick="mejorNota()">Mejor Nota de la clase</button>
+  <button onclick="mediaTrimestre()">Media de un trimestre</button>
+  <select id="trimestre">
+    <option value="primero">1º trimestre</option>
+    <option value="segundo">2º trimestre</option>
+    <option value="tercero">3º trimestre</option>
+  </select>
+  <input type="text" id="buscaNombre">
+  <button onclick="buscarAlumnos()">Buscar Alumno</button>
+</div>
+
 <script>
   // ===== DATOS =====
   // Los datos están escritos aquí mismo. Si añades un alumno y recargas
@@ -165,6 +180,25 @@
 
   // Al cargar la página, dibujamos la tabla
   pintarTabla();
+
+  // CONSULTAS
+  function contarAprobados(){
+    //quien  
+  }
+
+  function mejorNota(){
+    //quien tiene la mejor nota del curso
+  }
+
+  function mediaTrimestre(){
+    // la media de todos los alumnos en un trimestre concreto
+  }
+
+  function buscarAlumno(){
+    //Sale en la posicion de la lista en la que está, sus notas y su media 
+
+  }
+
 </script>
 
 </body>

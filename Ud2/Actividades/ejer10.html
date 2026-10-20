@@ -17,47 +17,40 @@
     <label>Número de filas</label><br>
     <input type="text" id="filas" oninput="rombo()">
 
-    <p id="salida"></p>
+    <!-- fuente monospace para que todos los caracteres ocupen lo mismo -->
+    <p id="salida" ></p>
 </body>
 
 <script>
-    //funcion para crear el rombo
+    //funcion para crear el rombo hueco
     function rombo(){
-        //según el numero de filas que se introduzcan 
-        filas = document.getElementById("filas").value;
-        
-                
-        //un rombo son dos triangulos juntos
+        //según el numero de filas que se introduzcan, lo pasamos a numero
+        var filas = Number(document.getElementById("filas").value);
+        var texto = "";
 
-        //Creciente
-        for (i = 0; i < filas; i++){
-            espaciohtml = "";
-            asterisco = "";
+        //un rombo son dos triangulos juntos, asi que recorremos desde -(filas-1) hasta filas-1
+        for (var i = -(filas - 1); i <= filas - 1; i++){
 
-            for (k = 0; k < filas - i -1 ; k++){
-                espaciohtml += "&nbsp&nbsp";
+            //d es lo que se separan los asteriscos del centro: 0 en las puntas y filas-1 en el medio
+            var d = filas - 1 - Math.abs(i);
+
+            //recorremos las columnas de la fila
+            for (var c = 0; c <= filas - 1 + d; c++){
+
+                //solo ponemos asterisco en los dos bordes, el resto son espacios
+                if (c == filas - 1 - d || c == filas - 1 + d){
+                    texto += "*&nbsp;";
+                } else {
+                    texto += "&nbsp;&nbsp;";
+                }
             }
 
-            for(j = 1;  j <= 2*i +1; j++){
-                asterisco +="*"
-            }
-            salida.innerHTML = salida.innerHTML + espaciohtml + asterisco + "<br>";
+            //salto de linea al terminar la fila
+            texto += "<br>";
         }
 
-        //Decreciente
-        for (var i = filas -2; i>=0; i--){
-            asterisco = "";
-            espaciohtml= "";
-
-            for( k = 0; k < filas - i -1; k++){
-                espaciohtml += "&nbsp&nbsp";
-            }
-            for (j = 1; j <= 2 * i + 1; j++){
-                asterisco += "*";
-            }
-
-            salida.innerHTML = salida.innerHTML + espaciohtml + asterisco + ">"
-        }
+        //mostramos el resultado una sola vez
+        document.getElementById("salida").innerHTML = texto;
     }
 </script>
 </html>

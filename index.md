@@ -23,6 +23,7 @@ Selecciona una unidad para ver los ejercicios
 *  [Ejer7](./Ud2/Actividades/ejer7.html)
 *  [Ejer8](./Ud2/Actividades/ejer8.html)
 *  [Ejer9](./Ud2/Actividades/ejer9.html)
+*  [Ejer10](./Ud2/Actividades/ejer10.html)
 
 ### Ejercicios de Clase
 *  [Area de una circunferencia](./Ud2/Ejercicios_Clase/AreaCirculo.html)
@@ -30,7 +31,9 @@ Selecciona una unidad para ver los ejercicios
 *  [Operadores Aritmeticos](./Ud2/Ejercicios_Clase/OperacionesAritmeticas.html)
 *  [Operador Ternario](./Ud2/Ejercicios_Clase/OperadorTernario.html)
 *  [Var](./Ud2/Ejercicios_Clase/Var.html)
-
+*  [Eventos](./Ud2/Ejercicios_Clase/EventosOn.html)
+*  [Consultas](./Ud2/Ejercicios_Clase/notas-simple_Consultas.html)
+*  [Reto 1](./Ud2/Ejercicios_Clase/Reto1.html)
 
 ---
 

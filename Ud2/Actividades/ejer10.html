@@ -15,12 +15,49 @@
     <br><br>
 
     <label>Número de filas</label><br>
-    <input type="text" oninput="rombo()">
+    <input type="text" id="filas" oninput="rombo()">
+
+    <p id="salida"></p>
 </body>
 
 <script>
+    //funcion para crear el rombo
     function rombo(){
+        //según el numero de filas que se introduzcan 
+        filas = document.getElementById("filas").value;
         
+                
+        //un rombo son dos triangulos juntos
+
+        //Creciente
+        for (i = 0; i < filas; i++){
+            espaciohtml = "";
+            asterisco = "";
+
+            for (k = 0; k < filas - i -1 ; k++){
+                espaciohtml += "&nbsp&nbsp";
+            }
+
+            for(j = 1;  j <= 2*i +1; j++){
+                asterisco +="*"
+            }
+            salida.innerHTML = salida.innerHTML + espaciohtml + asterisco + "<br>";
+        }
+
+        //Decreciente
+        for (var i = filas -2; i>=0; i--){
+            asterisco = "";
+            espaciohtml= "";
+
+            for( k = 0; k < filas - i -1; k++){
+                espaciohtml += "&nbsp&nbsp";
+            }
+            for (j = 1; j <= 2 * i + 1; j++){
+                asterisco += "*";
+            }
+
+            salida.innerHTML = salida.innerHTML + espaciohtml + asterisco + ">"
+        }
     }
 </script>
 </html>

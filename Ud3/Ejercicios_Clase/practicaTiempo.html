@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Practica con el tiempo</title>
+</head>
+<body>
+    <script>
+        //1. fecha en castellano
+        //mostrar por consola la fecha de hoy en formato lunes, xx de xxxxx de xxxx
+        const hoy = new Date();
+        console.log(hoy.toLocaleDateString("es-ES", {weekday: 'long' }) + ", "+ hoy.getDate() +" de "+ hoy.toLocaleDateString("es-ES", {month : 'long'}) + " de " + hoy.getFullYear());
+
+        //2. Cuantos dias faltan para mi cumpleaños
+        const fin = new Date(2027, 1, 25);
+        console.log(Math.ceil((fin - hoy) / 86400000));
+
+        //3. Reloj pausa
+        const reloj
+    </script>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Funciones Flechas</title>
+</head>
+<body>
+    <script>
+        function doble(n){return n*2;}
+        const dobleF = n => n*2;
+        function sumar(a ,b){ return a + b;}
+        const sumarF = (a , b) => a +b;
+
+        function saludar(){ console.log("Hola");}
+        const saludarF =  () => console.log("Holaaa");
+
+        function crono() {console.log("tic"); }
+        setInterval(crono, 1000);
+
+        setInterval(() => console.log("tic"), 1000);
+
+        function triple(n){
+            return n * 3;
+        }
+        const triple = (n) => n*3;
+    </script>
+</body>
+</html>

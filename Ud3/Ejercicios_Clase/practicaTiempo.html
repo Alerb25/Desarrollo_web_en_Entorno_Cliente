@@ -1,23 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Practica con el tiempo</title>
 </head>
+
 <body>
+    <p id="reloj"></p> 
+    <button id="parar">Parar</button> 
+    <button id="reanudar">Reanudar</button>
+
     <script>
         //1. fecha en castellano
         //mostrar por consola la fecha de hoy en formato lunes, xx de xxxxx de xxxx
         const hoy = new Date();
-        console.log(hoy.toLocaleDateString("es-ES", {weekday: 'long' }) + ", "+ hoy.getDate() +" de "+ hoy.toLocaleDateString("es-ES", {month : 'long'}) + " de " + hoy.getFullYear());
+        console.log(hoy.toLocaleDateString("es-ES", { weekday: 'long' }) + ", " + hoy.getDate() + " de " + hoy.toLocaleDateString("es-ES", { month: 'long' }) + " de " + hoy.getFullYear());
 
         //2. Cuantos dias faltan para mi cumpleaños
-        const fin = new Date(2027, 1, 25);
+        const fin = new Date(2027, 0, 25);
         console.log(Math.ceil((fin - hoy) / 86400000));
 
-        //3. Reloj pausa
-        const reloj
+        //3. Reloj con pausa mostrar la hora actual actualizandose cada segundo
+        const reloj = document.getElementById("reloj");
+        const parar = document.getElementById("parar");
+        const reanudar = document.getElementById("reanudar");
+
+        relojAct =  new Date().toLocaleDateString("es-ES"); 
+        const intervalo = setInterval(relojAct, 1000);
+
+        parar.addEventlistener("click", () => clearInterval(intervalo));
+        reanudar.addEventListener("click", () => {intervalo = setInterval(relojAct, 1000)});
+        
     </script>
 </body>
+
 </html>

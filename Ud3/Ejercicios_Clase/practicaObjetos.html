@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Practica con objetos</title>
+</head>
+
+<body>
+
+
+</body>
+<script>
+
+    //Clase libro
+    class Libro {
+        constructor(titulo, autor, paginas) {
+            this.titulo = titulo;
+            this.autor = autor;
+            this.paginas = paginas;
+        }
+        resumen() { console.log(this.titulo, " de ", this.autor, "(", this.paginas, " paginas)") }
+    }
+
+    const quijote = new Libro("Don quijote de la Mancha", "Miguel de Cervantes", 1424)
+    quijote.resumen();
+
+    //clase producto
+    class Producto {
+        constructor(nombre, precio, stock) {
+            this.nombre = nombre;
+            this.precio = precio;
+            this.stock = stock;
+        }
+        conIVA() {
+            //aplicarle IVA a un producto
+            total = this.precio * 1.21;
+            return total;
+        }
+
+        vender(n) {
+            //restar n del stock solo si hay sufciente y devuelve true o false
+            if (this.stock > n) {
+                return true;
+                this.stock = this.stock - n;
+            } else {
+                return false;
+            }
+        }
+    }
+
+    //inventario
+    let inventario = [new Producto("teclado", 20, 10), new Producto("raton", 10, 5), new Producto("Monitor", 40,  3), new Producto("Cable-usb", 3, 15)];
+    for(i = 0;i < inventario; i++){
+        if(inventario[i].stock >= 5){
+            valor = inventario[i].stock * inventario[i].precio;
+            return valor;
+        }
+    }
+</script>
+
+</html>

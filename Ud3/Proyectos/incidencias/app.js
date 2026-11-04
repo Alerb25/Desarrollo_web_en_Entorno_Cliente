@@ -23,9 +23,11 @@ class Incidencia {
     html += "<p>" + this.descripcion + "</p>";
     html += "<p class='meta'>" + this.autor + " · " + hora + "</p>";
     // TODO RETO 3: añade "hace X min" con this.minutos()
+    html += "<p class='meta'>" + this.autor + " · " + hora + " · hace " + this.minutos() + " min</p>";
+
     // TODO RETO 1: si NO está resuelta, añade el botón:
-    if(resuelta = false){
-    html +=   "<button type='button' onclick='resolver(" + this.id + ")'>Resolver</button>"
+    if (!this.resuelta) {
+      html += "<button type='button' onclick='resolver(" + this.id + ")'>Resolver</button>"
     }
     html += "</article>";
     return html;
@@ -34,9 +36,11 @@ class Incidencia {
   // TODO RETO 3: devuelve los minutos que han pasado desde this.fecha
   //   (resta Date.now() - this.fecha y divide entre 60000; redondea con Math.floor)
   minutos() {
-    return 0;
-  }
+  return Math.floor((Date.now() - this.fecha) / 60000);
 }
+
+  }
+
 
 // =====================================================================
 // 2. LOS DATOS: un array que se guarda en localStorage (3.4)
@@ -55,7 +59,7 @@ function cargar() {
   // Volvemos a crear cada Incidencia para recuperar el método html()
   for (let i = 0; i < datos.length; i++) {
     const inc = new Incidencia(datos[i].autor, datos[i].equipo,
-                               datos[i].prioridad, datos[i].descripcion);
+      datos[i].prioridad, datos[i].descripcion);
     inc.id = datos[i].id;
     inc.fecha = datos[i].fecha;
     inc.resuelta = datos[i].resuelta;
@@ -74,9 +78,15 @@ function pintar() {
   if (html === "") html = "<p>No hay incidencias.</p>";
   document.getElementById("lista").innerHTML = html;
 
-  document.getElementById("resumen").textContent = "Total: " + incidencias.length;
   // TODO RETO 2: cuenta las que NO están resueltas y muéstralo así:
   //   "Total: 4 · Pendientes: 3"   
+  let pendientes = 0;
+  for (let i = 0; i < incidencias.length; i++) {
+    if (!incidencias[i].resuelta) pendientes++;
+  }
+  document.getElementById("resumen").textContent = "Total: " + incidencias.length + " · Pendientes: " + pendientes;
+
+
 }
 
 // Muestra un mensaje que desaparece a los 2 segundos (3.2)
@@ -115,13 +125,16 @@ document.getElementById("enviar").addEventListener("click", () => {
 // TODO RETO 1: busca con un for la incidencia cuyo id coincide,
 //   ponle resuelta = true, y después guardar() y pintar()
 function resolver(id) {
-  for(i = 0; i == id; i++){
-    resuelta = true;
-    guardar();
-    pintar();
+  for (let i = 0; i < incidencias.length; i++) {
+    if (incidencias[i].id === id) {
+      incidencias[i].resuelta = true;
+      guardar();
+      pintar();
+      break;  // Termina la búsqueda
+    }
   }
-
 }
+ 
 
 // =====================================================================
 // 5. AL ABRIR LA PÁGINA

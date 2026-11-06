@@ -40,6 +40,20 @@ class Incidencia {
   return Math.floor((Date.now() - this.fecha) / 60000);
 }
 
+//Reto 5 esUrgente tiene que ser un metodo
+esUrgente(){
+const urgente = document.createElement("option");
+  for (let i = 0; i < incidencias.length; i++) {
+    if (this.resuelta == false && this.prioridad == "alta" && this.minutos() >= 30 ){
+        urgente.value = "urgente";
+        urgente.id = "urgente";
+        prioridad.appendchild(urgente);
+        setInterval(pintar, 60000);
+    }
+  }
+}
+ 
+
   }
 
 
@@ -157,19 +171,7 @@ function eliminar(id){
   }
 }
 
-//Reto 5 esUrgente
-const urgente = document.createElement("option");
-function esUrgente(){
-   for (let i = 0; i < incidencias.length; i++) {
-    if (incidencias[i].resuelta == false && incidencias[i].prioridad == "alta" && incidencias[i].minutos() >= 30 ){
-        urgente.value = "urgente";
-        urgente.id = "urgente";
-        prioridad.appendchild(urgente);
-        setInterval(pintar, 60000);
-    }
-  }
-}
- 
+
 
 // =====================================================================
 // 5. AL ABRIR LA PÁGINA

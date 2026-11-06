@@ -29,6 +29,7 @@ class Incidencia {
     if (!this.resuelta) {
       html += "<button type='button' onclick='resolver(" + this.id + ")'>Resolver</button>"
     }
+    html += "<button type='button' onclick='eliminar(" + this.id + ")'>Eliminar</button>"
     html += "</article>";
     return html;
   }
@@ -87,6 +88,13 @@ function pintar() {
   document.getElementById("resumen").textContent = "Total: " + incidencias.length + " · Pendientes: " + pendientes;
 
 
+  //Urgentes 
+    let urgentes = 0;
+  for (let i = 0; i < incidencias.length; i++) {
+    if (!incidencias[i].prioridad == "urgente") urgentes++;
+  }
+  //se ven en el title de la pag
+  document.title = "Incidencias(", urgentes, ")";
 }
 
 // Muestra un mensaje que desaparece a los 2 segundos (3.2)
@@ -131,6 +139,33 @@ function resolver(id) {
       guardar();
       pintar();
       break;  // Termina la búsqueda
+    }
+  }
+}
+
+//Reto 4 Boton de eliminar
+function eliminar(id){
+  for (let i = 0; i < incidencias.length; i++) {
+    if (incidencias[i].id === id) {
+      //pide confirmar
+      if (window.confirm("¿Seguro que quiere eliminar la incidencia?")){
+        incidencias.splice(i ,1); // elimina 1 elemento desde el indice i
+        guardar();
+        pintar();
+      }
+    }
+  }
+}
+
+//Reto 5 esUrgente
+const urgente = document.createElement("option");
+function esUrgente(){
+   for (let i = 0; i < incidencias.length; i++) {
+    if (incidencias[i].resuelta == false && incidencias[i].prioridad == "alta" && incidencias[i].minutos() >= 30 ){
+        urgente.value = "urgente";
+        urgente.id = "urgente";
+        prioridad.appendchild(urgente);
+        setInterval(pintar, 60000);
     }
   }
 }

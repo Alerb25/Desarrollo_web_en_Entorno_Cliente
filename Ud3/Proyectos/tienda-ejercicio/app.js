@@ -116,7 +116,7 @@ const carrito = {
   // Si se ha podido añadir, devuelve true.
   agregar(producto) {
     this.lineas.push(new LineaCarrito(producto, 1));
-    return true;
+     return true;
   },
 
   // TODO EJERCICIO 3 · quitar(id): quita del array la línea de ese producto

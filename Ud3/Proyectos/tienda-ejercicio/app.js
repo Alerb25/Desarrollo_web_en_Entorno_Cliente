@@ -1,12 +1,7 @@
 // =====================================================================
-// EJERCICIOS · Tienda DAW con carrito
-// Lo que ya funciona: el catálogo. Lo que tienes que programar: el carrito.
-// Busca los comentarios TODO (ejercicios 1 a 4).
+// EJERCICIOS · Tienda DAW con carrito (resuelto)
 // =====================================================================
 
-// ---------------------------------------------------------------------
-// DADO: la clase Producto y el catálogo (igual que en el ejemplo de clase)
-// ---------------------------------------------------------------------
 class Producto {
   constructor(id, nombre, precio, stock, icono) {
     this.id = id;
@@ -53,7 +48,6 @@ function buscarProducto(id) {
   return null;
 }
 
-// Muestra un aviso que se borra solo a los 3 segundos
 function aviso(texto) {
   document.getElementById("aviso").textContent = texto;
   setTimeout(() => {
@@ -62,35 +56,25 @@ function aviso(texto) {
 }
 
 // ---------------------------------------------------------------------
-// TODO EJERCICIO 1 · La clase LineaCarrito
-// Una línea del carrito guarda UN producto y CUÁNTAS unidades se compran.
-//  - constructor(producto, cantidad): la cantidad vale 1 si no se indica
-//  - subtotal(): precio con IVA del producto × cantidad
-//  - html(): devuelve el HTML de la línea (mira la estructura en la diapositiva
-//    y las clases .linea, .icono, .nombre, .cantidad y .subtotal en estilos.css).
-//    El botón ✕ debe llamar a quitar(id del producto).
+// EJERCICIO 1 · La clase LineaCarrito
 // ---------------------------------------------------------------------
 class LineaCarrito {
-  constructor(producto, cantidad) {
+  constructor(producto, cantidad = 1) {
     this.producto = producto;
-    if (cantidad <= 0){
-      this.cantidad = 1
-    }else{
-      this.cantidad = cantidad;
-    }
+    this.cantidad = cantidad > 0 ? cantidad : 1;
   }
 
   subtotal() {
-    precio = this.producto.conIVA();
-    return precio*this.cantidad;
+    return this.producto.conIVA() * this.cantidad;
   }
+
   html() {
-        return "<div class='linea'>" +
-      "<span class='icono'>" + this.icono + "</span>" +
-      "<h3>" + this.nombre + "</h3>" +
-      "<span class='cantidad'>" + this.cantidad + " €</span>" +
-      "<span class='subtotal'> " + this.subtotal.toFixed(2) + " unidades</span>" +
-      "<button onclick='quitar(1)'>X</button>" +
+    return "<div class='linea'>" +
+      "<span class='icono'>" + this.producto.icono + "</span>" +
+      "<span class='nombre'>" + this.producto.nombre + "</span>" +
+      "<span class='cantidad'>x" + this.cantidad + "</span>" +
+      "<span class='subtotal'>" + this.subtotal().toFixed(2) + " €</span>" +
+      "<button onclick='quitar(" + this.producto.id + ")'>✕</button>" +
       "</div>";
   }
 }
@@ -100,51 +84,73 @@ class LineaCarrito {
 // ---------------------------------------------------------------------
 const carrito = {
   lineas: [],
-  descuento: 0,      // 0.10 significará un 10 % (ejercicio 4)
+  descuento: 0,
 
-  // TODO EJERCICIO 2 · buscarLinea(id): la línea de ese producto, o null
+  // EJERCICIO 2
   buscarLinea(id) {
-    for (let i = 0; i < lineas.length; i++) {
-    if (this.lineas[i].id === id) return lineas[i];
-  }
+    for (let i = 0; i < this.lineas.length; i++) {
+      if (this.lineas[i].producto.id === id) return this.lineas[i];
+    }
+    return null;
   },
 
-  // TODO EJERCICIO 2 · agregar(producto)
-  // Ahora mismo crea una línea nueva cada vez (como en el ejemplo).
-  // Cámbialo: si el producto ya está en el carrito, suma 1 a su cantidad.
-  // No se puede pasar del stock del producto: en ese caso devuelve false.
-  // Si se ha podido añadir, devuelve true.
+  // EJERCICIO 2
   agregar(producto) {
-    this.lineas.push(new LineaCarrito(producto, 1));
+    const linea = this.buscarLinea(producto.id);
+    if (linea !== null) {
+      if (linea.cantidad >= producto.stock) return false;
+      linea.cantidad++;
+    } else {
+      if (producto.stock < 1) return false;
+      this.lineas.push(new LineaCarrito(producto, 1));
+    }
     return true;
   },
 
-  // TODO EJERCICIO 3 · quitar(id): quita del array la línea de ese producto
+  // EJERCICIO 3
   quitar(id) {
+    for (let i = 0; i < this.lineas.length; i++) {
+      if (this.lineas[i].producto.id === id) {
+        this.lineas.splice(i, 1);
+        return;
+      }
+    }
   },
 
-  // TODO EJERCICIO 3 · vaciar(): deja el carrito sin líneas y sin descuento
+  // EJERCICIO 3
   vaciar() {
+    this.lineas = [];
+    this.descuento = 0;
   },
 
-  // TODO EJERCICIO 3 · unidades(): suma de las cantidades de todas las líneas
+  // EJERCICIO 3
   unidades() {
-    return 0;
+    let suma = 0;
+    for (let i = 0; i < this.lineas.length; i++) {
+      suma += this.lineas[i].cantidad;
+    }
+    return suma;
   },
 
-  // TODO EJERCICIO 3 · total(): suma de los subtotales de todas las líneas
+  // EJERCICIO 3
   total() {
-    return 0;
+    let suma = 0;
+    for (let i = 0; i < this.lineas.length; i++) {
+      suma += this.lineas[i].subtotal();
+    }
+    return suma;
   },
 
-  // TODO EJERCICIO 4 · aplicarCodigo(codigo): si el código es "DAW10"
-  // (da igual mayúsculas o espacios), pon descuento a 0.10 y devuelve true.
-  // Si no, devuelve false.
+  // EJERCICIO 4
   aplicarCodigo(codigo) {
+    if (codigo.trim().toUpperCase() === "DAW10") {
+      this.descuento = 0.10;
+      return true;
+    }
     return false;
   },
 
-  // DADO: rebaja y total final, redondeados a céntimos para que las cuentas cuadren
+  // DADO
   rebaja() {
     return Number((Number(this.total().toFixed(2)) * this.descuento).toFixed(2));
   },
@@ -154,30 +160,68 @@ const carrito = {
 };
 
 // ---------------------------------------------------------------------
-// TODO EJERCICIO 3 · pintarCarrito()
-//  - En #carrito-lineas: el html() de cada línea, o «Tu carrito está vacío»
-//  - En #carrito-resumen: las unidades y el total (mira la diapositiva)
-//  - Ejercicio 4: si hay descuento, muestra también el subtotal y la rebaja
+// EJERCICIO 3 y 4 · pintarCarrito()
 // ---------------------------------------------------------------------
 function pintarCarrito() {
-  document.getElementById("carrito-lineas").innerHTML =
-    "<p class='vacio'>Carrito pendiente de programar (" + carrito.lineas.length + " líneas)</p>";
+  const contLineas = document.getElementById("carrito-lineas");
+  const contResumen = document.getElementById("carrito-resumen");
+
+  if (carrito.lineas.length === 0) {
+    contLineas.innerHTML = "<p class='vacio'>Tu carrito está vacío</p>";
+  } else {
+    let html = "";
+    for (let i = 0; i < carrito.lineas.length; i++) {
+      html += carrito.lineas[i].html();
+    }
+    contLineas.innerHTML = html;
+  }
+
+  let resumen = "<p>" + carrito.unidades() + " unidades</p>";
+  if (carrito.descuento > 0) {
+    resumen += "<p>Subtotal: " + carrito.total().toFixed(2) + " €</p>" +
+               "<p>Descuento (" + (carrito.descuento * 100) + " %): -" +
+               carrito.rebaja().toFixed(2) + " €</p>";
+  }
+  resumen += "<p><strong>Total: " + carrito.totalFinal().toFixed(2) + " €</strong></p>";
+  contResumen.innerHTML = resumen;
+
   guardar();
 }
 
 // ---------------------------------------------------------------------
-// TODO EJERCICIO 4 · Guardar y recuperar el carrito en localStorage
-// Pista: guarda solo el id y la cantidad de cada línea (y el descuento).
-// Al cargar, busca cada producto por su id y vuelve a crear la LineaCarrito.
+// EJERCICIO 4 · localStorage
 // ---------------------------------------------------------------------
 function guardar() {
+  const datos = {
+    descuento: carrito.descuento,
+    lineas: []
+  };
+  for (let i = 0; i < carrito.lineas.length; i++) {
+    datos.lineas.push({
+      id: carrito.lineas[i].producto.id,
+      cantidad: carrito.lineas[i].cantidad
+    });
+  }
+  localStorage.setItem("carrito", JSON.stringify(datos));
 }
 
 function cargar() {
+  const texto = localStorage.getItem("carrito");
+  if (texto === null) return;
+
+  const datos = JSON.parse(texto);
+  carrito.descuento = datos.descuento;
+  carrito.lineas = [];
+  for (let i = 0; i < datos.lineas.length; i++) {
+    const producto = buscarProducto(datos.lineas[i].id);
+    if (producto !== null) {
+      carrito.lineas.push(new LineaCarrito(producto, datos.lineas[i].cantidad));
+    }
+  }
 }
 
 // ---------------------------------------------------------------------
-// DADO: los eventos (ya llaman a los métodos que vas a programar)
+// DADO: los eventos
 // ---------------------------------------------------------------------
 function comprar(id) {
   const producto = buscarProducto(id);

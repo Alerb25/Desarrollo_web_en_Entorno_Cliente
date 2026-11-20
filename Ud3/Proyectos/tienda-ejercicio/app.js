@@ -96,14 +96,7 @@ const carrito = {
 
   // EJERCICIO 2
   agregar(producto) {
-    const linea = this.buscarLinea(producto.id);
-    if (linea !== null) {
-      if (linea.cantidad >= producto.stock) return false;
-      linea.cantidad++;
-    } else {
-      if (producto.stock < 1) return false;
-      this.lineas.push(new LineaCarrito(producto, 1));
-    }
+    this.lineas.push(new LineaCarrito(producto, 1));
     return true;
   },
 
